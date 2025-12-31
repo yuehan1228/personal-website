@@ -5,12 +5,22 @@
 
 set -e
 
-# 颜色输出
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-NC='\033[0m' # No Color
+# 检测终端是否支持颜色
+if [ -t 1 ] && command -v tput > /dev/null 2>&1; then
+    # 终端支持颜色
+    RED='\033[0;31m'
+    GREEN='\033[0;32m'
+    YELLOW='\033[1;33m'
+    BLUE='\033[0;34m'
+    NC='\033[0m' # No Color
+else
+    # 终端不支持颜色，使用空字符串
+    RED=''
+    GREEN=''
+    YELLOW=''
+    BLUE=''
+    NC=''
+fi
 
 # GitHub 仓库地址
 GITHUB_REPO="https://github.com/yuehan1228/personal-website.git"
@@ -47,14 +57,14 @@ fi
 case $choice in
     1)
         echo -e "${GREEN}启动 Python HTTP 服务器...${NC}"
-        echo "访问地址: ${BLUE}http://localhost:8000${NC}"
+        echo -e "访问地址: ${BLUE}http://localhost:8000${NC}"
         echo "按 Ctrl+C 停止服务器"
         echo ""
         python3 -m http.server 8000
         ;;
     2)
         echo -e "${GREEN}启动 Node.js HTTP 服务器...${NC}"
-        echo "访问地址: ${BLUE}http://localhost:8000${NC}"
+        echo -e "访问地址: ${BLUE}http://localhost:8000${NC}"
         echo "按 Ctrl+C 停止服务器"
         echo ""
         if ! command -v http-server &> /dev/null; then
@@ -79,7 +89,7 @@ case $choice in
         # 检查是否已有远程仓库
         if ! git remote | grep -q origin; then
             echo -e "${YELLOW}添加 GitHub 远程仓库...${NC}"
-            echo "仓库地址: ${BLUE}${GITHUB_REPO}${NC}"
+            echo -e "仓库地址: ${BLUE}${GITHUB_REPO}${NC}"
             echo ""
             read -p "是否使用默认仓库地址? (y/n): " use_default
             if [ "$use_default" = "y" ] || [ "$use_default" = "Y" ] || [ -z "$use_default" ]; then
@@ -132,12 +142,12 @@ case $choice in
         echo -e "${GREEN}========================================${NC}"
         echo ""
         echo "下一步操作："
-        echo "1. 访问 GitHub 仓库: ${BLUE}${GITHUB_REPO}${NC}"
+        echo -e "1. 访问 GitHub 仓库: ${BLUE}${GITHUB_REPO}${NC}"
         echo "2. 进入 Settings > Pages"
-        echo "3. Source 选择: ${BLUE}${current_branch} branch${NC}"
-        echo "4. 文件夹选择: ${BLUE}/ (root)${NC}"
+        echo -e "3. Source 选择: ${BLUE}${current_branch} branch${NC}"
+        echo -e "4. 文件夹选择: ${BLUE}/ (root)${NC}"
         echo "5. 保存后，网站将在几分钟后可通过以下地址访问："
-        echo "   ${BLUE}https://yuehan1228.github.io/personal-website${NC}"
+        echo -e "   ${BLUE}https://yuehan1228.github.io/personal-website${NC}"
         echo ""
         ;;
     *)
