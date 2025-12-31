@@ -80,7 +80,7 @@ case $choice in
         # 检查是否已有远程仓库
         if ! git remote | grep -q origin; then
             echo -e "${YELLOW}请先添加 GitHub 远程仓库:${NC}"
-            echo "git remote add origin https://github.com/你的用户名/personal-website.git"
+            echo "git remote add origin https://github.com/yuehan1228/personal-website.git"
             echo ""
             read -p "是否现在添加? (y/n): " add_remote
             if [ "$add_remote" = "y" ]; then
