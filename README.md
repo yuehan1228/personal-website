@@ -12,17 +12,13 @@ python -m http.server 8000
 # 然后访问 http://localhost:8000
 ```
 
-### 外部访问（推荐）
+### 部署到 GitHub Pages
 ```bash
 # 使用部署脚本（最简单）
 chmod +x deploy.sh
 ./deploy.sh
 
-# 或手动选择：
-# - GitHub Pages: 免费永久托管
-# - Vercel: 一键部署，自动HTTPS
-# - ngrok: 快速临时访问
-# 详细说明见下方"外部访问"章节
+# 详细说明见下方"部署说明"章节
 ```
 
 ## 功能特点
@@ -40,9 +36,7 @@ personal-website/
 ├── index.html      # 主页面文件
 ├── styles.css      # 样式文件
 ├── script.js       # JavaScript交互文件
-├── deploy.sh       # 部署脚本（一键部署）
-├── vercel.json     # Vercel部署配置
-├── netlify.toml    # Netlify部署配置
+├── deploy.sh       # 部署脚本（一键部署到GitHub Pages）
 ├── .gitignore      # Git忽略文件
 └── README.md       # 项目说明文档
 ```
@@ -62,144 +56,11 @@ personal-website/
    ```
    然后在浏览器中访问 `http://localhost:8000`
 
-### 外部访问（让其他人可以访问你的网站）
+### 部署到 GitHub Pages（让其他人可以访问你的网站）
 
-有几种方法可以让外部用户访问你的个人主页：
+#### 方法一：使用部署脚本（推荐）
 
-#### 方法一：使用 ngrok（快速临时访问）
-
-ngrok 可以快速创建一个公网可访问的隧道。
-
-1. **安装 ngrok**：
-   ```bash
-   # Linux/Mac
-   curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null
-   echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list
-   sudo apt update && sudo apt install ngrok
-   
-   # 或从官网下载：https://ngrok.com/download
-   ```
-
-2. **注册并获取 token**（免费）：
-   - 访问 https://ngrok.com/ 注册账号
-   - 获取 authtoken
-
-3. **配置并启动**：
-   ```bash
-   # 配置token（只需一次）
-   ngrok config add-authtoken YOUR_TOKEN
-   
-   # 启动本地服务器
-   python -m http.server 8000
-   
-   # 在另一个终端启动ngrok
-   ngrok http 8000
-   ```
-   
-4. ngrok 会提供一个公网地址，例如：`https://abc123.ngrok.io`，分享这个地址即可。
-
-#### 方法二：使用 GitHub Pages（免费永久托管）
-
-1. **创建 GitHub 仓库**：
-   ```bash
-   # 初始化git仓库
-   cd personal-website
-   git init
-   git add .
-   git commit -m "Initial commit"
-   
-   # 在GitHub上创建新仓库，然后推送
-   git remote add origin https://github.com/你的用户名/personal-website.git
-   git branch -M main
-   git push -u origin main
-   ```
-
-2. **启用 GitHub Pages**：
-   - 进入仓库的 Settings
-   - 找到 Pages 选项
-   - Source 选择 `main` 分支，文件夹选择 `/ (root)`
-   - 保存后，网站将在 `https://你的用户名.github.io/personal-website` 可访问
-
-#### 方法三：使用 Vercel（推荐，免费且快速）
-
-1. **安装 Vercel CLI**：
-   ```bash
-   npm i -g vercel
-   ```
-
-2. **部署**：
-   ```bash
-   cd personal-website
-   vercel
-   ```
-   
-   按照提示操作，完成后会获得一个 `https://your-project.vercel.app` 的地址。
-
-#### 方法四：使用 Netlify（免费托管）
-
-1. **安装 Netlify CLI**：
-   ```bash
-   npm install -g netlify-cli
-   ```
-
-2. **部署**：
-   ```bash
-   cd personal-website
-   netlify deploy --prod
-   ```
-   
-   首次使用需要登录和授权，完成后会获得一个 `https://your-site.netlify.app` 的地址。
-
-#### 方法五：使用 Cloudflare Pages（免费CDN加速）
-
-1. 访问 https://pages.cloudflare.com/
-2. 连接你的 GitHub 仓库
-3. 选择构建设置（本项目无需构建，直接部署）
-4. 自动获得 `https://your-project.pages.dev` 地址
-
-#### 方法六：使用本地网络IP（局域网访问）
-
-如果访问者和你同一局域网：
-
-1. **查找本机IP地址**：
-   ```bash
-   # Linux/Mac
-   ifconfig | grep "inet "
-   
-   # 或
-   ip addr show
-   
-   # Windows
-   ipconfig
-   ```
-
-2. **启动服务器**（绑定到所有网络接口）：
-   ```bash
-   # Python
-   python -m http.server 8000 --bind 0.0.0.0
-   
-   # Node.js
-   npx http-server -a 0.0.0.0 -p 8000
-   ```
-
-3. 其他人可以通过 `http://你的IP地址:8000` 访问
-
-**注意**：确保防火墙允许8000端口的访问。
-
-#### 推荐方案对比
-
-| 方案 | 优点 | 缺点 | 适用场景 |
-|------|------|------|----------|
-| ngrok | 快速、简单 | 免费版地址会变化 | 临时演示 |
-| GitHub Pages | 免费、稳定、永久 | 需要GitHub账号 | 长期使用 |
-| Vercel | 快速、自动部署 | 需要账号 | 专业部署 |
-| Netlify | 功能丰富 | 需要账号 | 专业部署 |
-| Cloudflare Pages | CDN加速 | 需要账号 | 全球访问 |
-| 本地IP | 无需配置 | 仅局域网 | 内网测试 |
-
-#### 使用部署脚本（快速部署）
-
-项目包含一个便捷的部署脚本 `deploy.sh`，可以快速选择部署方式：
+项目包含一个便捷的部署脚本，可以快速部署到 GitHub Pages：
 
 ```bash
 # 给脚本添加执行权限（首次使用）
@@ -208,13 +69,56 @@ chmod +x deploy.sh
 # 运行部署脚本
 ./deploy.sh
 
-# 或直接指定选项
-./deploy.sh 1  # 启动Python服务器
-./deploy.sh 2  # 启动Node.js服务器
-./deploy.sh 3  # 使用ngrok
-./deploy.sh 4  # 部署到GitHub Pages
-./deploy.sh 5  # 部署到Vercel
-./deploy.sh 6  # 部署到Netlify
+# 或直接部署到GitHub Pages
+./deploy.sh deploy
+```
+
+脚本会自动：
+1. 检查并初始化 git 仓库（如果还没有）
+2. 检查并添加 GitHub 远程仓库（如果需要）
+3. 提交并推送代码到 GitHub
+4. 提示你启用 GitHub Pages
+
+#### 方法二：手动部署
+
+1. **创建 GitHub 仓库**：
+   - 在 GitHub 上创建一个新仓库（例如：`personal-website`）
+
+2. **初始化并推送代码**：
+   ```bash
+   # 初始化git仓库
+   cd personal-website
+   git init
+   git add .
+   git commit -m "Initial commit"
+   
+   # 添加远程仓库（替换为你的仓库地址）
+   git remote add origin https://github.com/yuehan1228/personal-website.git
+   git branch -M main
+   git push -u origin main
+   ```
+
+3. **启用 GitHub Pages**：
+   - 进入仓库的 Settings
+   - 找到 Pages 选项
+   - Source 选择 `main` 分支，文件夹选择 `/ (root)`
+   - 保存后，网站将在 `https://yuehan1228.github.io/personal-website` 可访问
+   - 通常几分钟后即可访问
+
+#### 更新网站
+
+每次修改后，运行以下命令更新网站：
+
+```bash
+./deploy.sh deploy
+```
+
+或手动执行：
+
+```bash
+git add .
+git commit -m "Update website"
+git push origin main
 ```
 
 ## 自定义内容
