@@ -25,18 +25,30 @@ document.querySelectorAll('.nav-link').forEach(link => {
     });
 });
 
-// 平滑滚动
+// 平滑滚动（只处理锚点链接，不处理外部链接）
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const offsetTop = target.offsetTop - 70; // 考虑导航栏高度
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
+        const href = this.getAttribute('href');
+        // 只处理页面内的锚点链接
+        if (href && href.startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                const offsetTop = target.offsetTop - 70; // 考虑导航栏高度
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
         }
+    });
+});
+
+// 确保项目链接可以正常跳转
+document.querySelectorAll('.project-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+        // 不阻止默认行为，让链接正常跳转
+        console.log('项目链接被点击:', this.href);
     });
 });
 
