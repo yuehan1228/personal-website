@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人主页</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">我的主页</div>
+            <ul class="nav-menu">
+                <li><a href="#about" class="nav-link">个人介绍</a></li>
+                <li><a href="#interests" class="nav-link">兴趣爱好</a></li>
+                <li><a href="#projects" class="nav-link">工作项目</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">欢迎来到我的个人主页</h1>
+            <p class="hero-subtitle">探索我的世界，了解我的故事</p>
+            <a href="#about" class="btn-primary">开始了解</a>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- 个人介绍部分 -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <h2 class="section-title">个人介绍</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3>关于我</h3>
+                    <p>你好！欢迎来到我的个人主页。我是一名充满热情的专业人士，致力于在技术领域不断学习和成长。</p>
+                    <p>我拥有丰富的项目经验，擅长解决复杂的技术问题，并始终追求卓越。我相信持续学习和创新是推动个人和职业发展的关键。</p>
+                    <div class="about-skills">
+                        <div class="skill-item">
+                            <i class="fas fa-code"></i>
+                            <span>编程开发</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-cogs"></i>
+                            <span>系统设计</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-users"></i>
+                            <span>团队协作</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>创新思维</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 兴趣爱好部分 -->
+    <section id="interests" class="section interests-section">
+        <div class="container">
+            <h2 class="section-title">兴趣爱好</h2>
+            <div class="interests-grid">
+                <div class="interest-card">
+                    <div class="interest-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>阅读</h3>
+                    <p>喜欢阅读技术书籍、科幻小说和人文历史类书籍，通过阅读不断拓展知识面。</p>
+                </div>
+                <div class="interest-card">
+                    <div class="interest-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>编程</h3>
+                    <p>热爱编程，喜欢探索新技术，在开源项目中贡献代码，享受解决问题的过程。</p>
+                </div>
+                <div class="interest-card">
+                    <div class="interest-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>摄影</h3>
+                    <p>用镜头记录生活中的美好瞬间，喜欢拍摄风景、人像和街头摄影。</p>
+                </div>
+                <div class="interest-card">
+                    <div class="interest-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>音乐</h3>
+                    <p>喜欢听各种类型的音乐，偶尔也会弹奏乐器，音乐是我放松和灵感的重要来源。</p>
+                </div>
+                <div class="interest-card">
+                    <div class="interest-icon">
+                        <i class="fas fa-hiking"></i>
+                    </div>
+                    <h3>旅行</h3>
+                    <p>热爱旅行，探索不同的文化和风景，旅行让我保持开放的心态和好奇心。</p>
+                </div>
+                <div class="interest-card">
+                    <div class="interest-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>游戏</h3>
+                    <p>喜欢玩策略游戏和独立游戏，游戏不仅是娱乐，也是思考和学习的过程。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 工作项目部分 -->
+    <section id="projects" class="section projects-section">
+        <div class="container">
+            <h2 class="section-title">工作项目</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>项目一</h3>
+                        <p>这是一个重要的技术项目，展示了我在系统设计和开发方面的能力。项目涉及多个技术栈，包括前端、后端和数据库设计。</p>
+                        <div class="project-tags">
+                            <span class="tag">Web开发</span>
+                            <span class="tag">数据库</span>
+                            <span class="tag">API设计</span>
+                        </div>
+                        <a href="#" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>项目二</h3>
+                        <p>移动应用开发项目，专注于用户体验和性能优化。项目成功上线并获得了用户的好评。</p>
+                        <div class="project-tags">
+                            <span class="tag">移动开发</span>
+                            <span class="tag">UI/UX</span>
+                            <span class="tag">性能优化</span>
+                        </div>
+                        <a href="#" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>项目三</h3>
+                        <p>人工智能和机器学习项目，使用先进的算法解决实际问题。项目在准确性和效率方面都达到了预期目标。</p>
+                        <div class="project-tags">
+                            <span class="tag">机器学习</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">数据分析</span>
+                        </div>
+                        <a href="#" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-server"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>项目四</h3>
+                        <p>云平台和微服务架构项目，实现了高可用性和可扩展性。项目支持大规模并发访问，稳定运行。</p>
+                        <div class="project-tags">
+                            <span class="tag">云服务</span>
+                            <span class="tag">微服务</span>
+                            <span class="tag">DevOps</span>
+                        </div>
+                        <a href="#" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 我的个人主页. 保留所有权利.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
