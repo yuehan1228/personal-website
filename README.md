@@ -2,6 +2,29 @@
 
 这是一个现代化的个人主页网站，包含三个主要部分：个人介绍、兴趣爱好和工作项目。
 
+## 🚀 快速开始
+
+### 本地预览
+```bash
+# 方式1: 直接打开 index.html
+# 方式2: 使用Python服务器
+python -m http.server 8000
+# 然后访问 http://localhost:8000
+```
+
+### 外部访问（推荐）
+```bash
+# 使用部署脚本（最简单）
+chmod +x deploy.sh
+./deploy.sh
+
+# 或手动选择：
+# - GitHub Pages: 免费永久托管
+# - Vercel: 一键部署，自动HTTPS
+# - ngrok: 快速临时访问
+# 详细说明见下方"外部访问"章节
+```
+
 ## 功能特点
 
 - 🎨 现代化的UI设计，响应式布局
@@ -17,6 +40,10 @@ personal-website/
 ├── index.html      # 主页面文件
 ├── styles.css      # 样式文件
 ├── script.js       # JavaScript交互文件
+├── deploy.sh       # 部署脚本（一键部署）
+├── vercel.json     # Vercel部署配置
+├── netlify.toml    # Netlify部署配置
+├── .gitignore      # Git忽略文件
 └── README.md       # 项目说明文档
 ```
 
@@ -169,6 +196,26 @@ ngrok 可以快速创建一个公网可访问的隧道。
 | Netlify | 功能丰富 | 需要账号 | 专业部署 |
 | Cloudflare Pages | CDN加速 | 需要账号 | 全球访问 |
 | 本地IP | 无需配置 | 仅局域网 | 内网测试 |
+
+#### 使用部署脚本（快速部署）
+
+项目包含一个便捷的部署脚本 `deploy.sh`，可以快速选择部署方式：
+
+```bash
+# 给脚本添加执行权限（首次使用）
+chmod +x deploy.sh
+
+# 运行部署脚本
+./deploy.sh
+
+# 或直接指定选项
+./deploy.sh 1  # 启动Python服务器
+./deploy.sh 2  # 启动Node.js服务器
+./deploy.sh 3  # 使用ngrok
+./deploy.sh 4  # 部署到GitHub Pages
+./deploy.sh 5  # 部署到Vercel
+./deploy.sh 6  # 部署到Netlify
+```
 
 ## 自定义内容
 
