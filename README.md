@@ -7,17 +7,21 @@
 ### 本地预览
 ```bash
 # 方式1: 直接打开 index.html
-# 方式2: 使用Python服务器
-python -m http.server 8000
+# 方式2: 使用部署脚本启动本地服务器
+chmod +x deploy.sh
+./deploy.sh local
 # 然后访问 http://localhost:8000
 ```
 
-### 部署到 GitHub Pages
+### 同时部署（本地 + GitHub Pages）
 ```bash
-# 使用部署脚本（最简单）
+# 使用部署脚本，同时启动本地服务器和部署到GitHub
 chmod +x deploy.sh
-./deploy.sh
+./deploy.sh deploy
 
+# 执行后：
+# - 本地服务器在后台运行，访问 http://localhost:8000
+# - 代码自动推送到GitHub Pages
 # 详细说明见下方"部署说明"章节
 ```
 
@@ -51,8 +55,8 @@ personal-website/
    # 使用Python
    python -m http.server 8000
    
-   # 使用Node.js
-   npx http-server
+   # 或使用部署脚本
+   ./deploy.sh local
    ```
    然后在浏览器中访问 `http://localhost:8000`
 
@@ -60,18 +64,24 @@ personal-website/
 
 #### 方法一：使用部署脚本（推荐）
 
-项目包含一个便捷的部署脚本，可以快速部署到 GitHub Pages：
+项目包含一个便捷的部署脚本，支持两种操作：
 
 ```bash
 # 给脚本添加执行权限（首次使用）
 chmod +x deploy.sh
 
-# 运行部署脚本
+# 运行部署脚本，显示菜单
 ./deploy.sh
 
-# 或直接部署到GitHub Pages
-./deploy.sh deploy
+# 或直接指定操作
+./deploy.sh local    # 仅本地预览（前台运行）
+./deploy.sh deploy   # 同时启动本地服务器（后台）+ 部署到GitHub Pages
 ```
+
+**推荐使用 `./deploy.sh deploy`**，它会：
+1. 在后台启动本地服务器（端口8000）
+2. 自动提交并推送到GitHub
+3. 本地和GitHub Pages都可以同时访问
 
 脚本会自动：
 1. 检查并初始化 git 仓库（如果还没有）

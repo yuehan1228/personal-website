@@ -32,21 +32,17 @@ echo ""
 # 检查参数
 if [ $# -eq 0 ]; then
     echo "请选择操作:"
-    echo "1. 本地预览 (Python服务器)"
-    echo "2. 本地预览 (Node.js服务器)"
-    echo "3. 部署到 GitHub Pages"
+    echo "1. 本地预览 (仅启动本地服务器)"
+    echo "2. 同时部署 (启动本地服务器 + 部署到GitHub Pages)"
     echo ""
-    read -p "请输入选项 (1-3): " choice
+    read -p "请输入选项 (1-2): " choice
 else
     case $1 in
-        "deploy"|"d")
-            choice=3
+        "deploy"|"d"|"2")
+            choice=2
             ;;
         "local"|"l"|"1")
             choice=1
-            ;;
-        "node"|"n"|"2")
-            choice=2
             ;;
         *)
             choice=$1
@@ -56,25 +52,43 @@ fi
 
 case $choice in
     1)
-        echo -e "${GREEN}启动 Python HTTP 服务器...${NC}"
+        echo -e "${GREEN}启动本地预览服务器...${NC}"
         echo -e "访问地址: ${BLUE}http://localhost:8000${NC}"
         echo "按 Ctrl+C 停止服务器"
         echo ""
         python3 -m http.server 8000
         ;;
     2)
-        echo -e "${GREEN}启动 Node.js HTTP 服务器...${NC}"
-        echo -e "访问地址: ${BLUE}http://localhost:8000${NC}"
-        echo "按 Ctrl+C 停止服务器"
+        echo -e "${GREEN}同时部署：启动本地服务器 + 部署到 GitHub Pages${NC}"
         echo ""
-        if ! command -v http-server &> /dev/null; then
-            echo -e "${YELLOW}正在安装 http-server...${NC}"
-            npm install -g http-server
+        
+        # 启动本地服务器（后台运行）
+        echo -e "${YELLOW}步骤 1/2: 启动本地服务器...${NC}"
+        
+        # 检查8000端口是否已被占用
+        if lsof -Pi :8000 -sTCP:LISTEN -t >/dev/null 2>&1 ; then
+            echo -e "${YELLOW}端口8000已被占用，尝试停止现有进程...${NC}"
+            pkill -f "python3 -m http.server 8000" 2>/dev/null || true
+            sleep 1
         fi
-        http-server -p 8000
-        ;;
-    3)
-        echo -e "${GREEN}部署到 GitHub Pages...${NC}"
+        
+        # 启动本地服务器（后台运行）
+        python3 -m http.server 8000 > /dev/null 2>&1 &
+        SERVER_PID=$!
+        sleep 1
+        
+        # 检查服务器是否成功启动
+        if ps -p $SERVER_PID > /dev/null 2>&1; then
+            echo -e "${GREEN}✓ 本地服务器已启动 (PID: $SERVER_PID)${NC}"
+            echo -e "   本地访问地址: ${BLUE}http://localhost:8000${NC}"
+            echo ""
+        else
+            echo -e "${RED}✗ 本地服务器启动失败${NC}"
+            echo ""
+        fi
+        
+        # 部署到 GitHub Pages
+        echo -e "${YELLOW}步骤 2/2: 部署到 GitHub Pages...${NC}"
         echo ""
         
         # 检查是否已初始化git
@@ -132,6 +146,10 @@ case $choice in
                 echo "1. GitHub 仓库是否存在"
                 echo "2. 是否有推送权限"
                 echo "3. 网络连接是否正常"
+                # 如果推送失败，仍然保持本地服务器运行
+                echo ""
+                echo -e "${YELLOW}注意: 本地服务器仍在运行 (PID: $SERVER_PID)${NC}"
+                echo "使用以下命令停止: kill $SERVER_PID"
                 exit 1
             }
         fi
@@ -141,22 +159,28 @@ case $choice in
         echo -e "${GREEN}部署完成!${NC}"
         echo -e "${GREEN}========================================${NC}"
         echo ""
+        echo -e "${BLUE}访问地址：${NC}"
+        echo -e "  本地: ${BLUE}http://localhost:8000${NC}"
+        echo -e "  GitHub Pages: ${BLUE}https://yuehan1228.github.io/personal-website${NC}"
+        echo ""
         echo "下一步操作："
         echo -e "1. 访问 GitHub 仓库: ${BLUE}${GITHUB_REPO}${NC}"
         echo "2. 进入 Settings > Pages"
         echo -e "3. Source 选择: ${BLUE}${current_branch} branch${NC}"
         echo -e "4. 文件夹选择: ${BLUE}/ (root)${NC}"
-        echo "5. 保存后，网站将在几分钟后可通过以下地址访问："
-        echo -e "   ${BLUE}https://yuehan1228.github.io/personal-website${NC}"
+        echo "5. 保存后，GitHub Pages 将在几分钟后生效"
+        echo ""
+        echo -e "${YELLOW}提示: 本地服务器正在后台运行 (PID: $SERVER_PID)${NC}"
+        echo "停止本地服务器: kill $SERVER_PID"
+        echo "或使用: pkill -f 'python3 -m http.server 8000'"
         echo ""
         ;;
     *)
         echo -e "${RED}无效的选项${NC}"
         echo "使用方法:"
         echo "  ./deploy.sh          # 显示菜单"
-        echo "  ./deploy.sh deploy   # 部署到GitHub Pages"
-        echo "  ./deploy.sh local    # 本地预览(Python)"
-        echo "  ./deploy.sh node     # 本地预览(Node.js)"
+        echo "  ./deploy.sh local    # 仅本地预览"
+        echo "  ./deploy.sh deploy   # 同时启动本地服务器和部署到GitHub Pages"
         exit 1
         ;;
 esac
