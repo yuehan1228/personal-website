@@ -25,6 +25,8 @@ const projectDetails = {
         title: '雷达自动标定工具',
         description: '基于 Flask 的雷达-GNSS 自动标定 Web 工具，将坐标解析、坐标系转换、参数求解和误差评估整合为可视化流程。',
         tags: ['Python', 'Flask', 'NumPy', '坐标变换'],
+        liveUrl: 'https://calibration-tool-ca9q.onrender.com',
+        liveLabel: '在线体验',
         details: '该工具用于装船机传感器标定。用户可以上传 CSV 或 TXT 格式的 GNSS 与雷达坐标，输入装船机回转、俯仰和臂架参数，自动求解雷达到目标坐标系的刚体变换矩阵并分析逐点误差。工具还提供泊位坐标系建立和大机姿态标定功能，支持从经纬度数据完成 WGS84 到局部坐标系转换，并通过回转与俯仰轨迹估计设备旋转中心。',
         technologies: [
             { name: 'Python', icon: 'fab fa-python' },
@@ -162,6 +164,12 @@ function displayProjectDetail() {
     `).join('');
 
     const tagsHTML = project.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+    const projectActionHTML = project.liveUrl ? `
+        <a href="${project.liveUrl}" class="project-action" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-external-link-alt"></i>
+            ${project.liveLabel || '访问项目'}
+        </a>
+    ` : '';
 
     document.getElementById('projectDetail').innerHTML = `
         <a href="index.html#projects" class="back-button">
@@ -171,6 +179,7 @@ function displayProjectDetail() {
             <h1>${project.title}</h1>
             <div class="project-meta">${tagsHTML}</div>
             <p class="project-description">${project.description}</p>
+            <div class="project-actions">${projectActionHTML}</div>
         </div>
 
         <div class="project-section">
