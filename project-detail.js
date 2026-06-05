@@ -56,6 +56,26 @@ const projectDetails = {
             { name: 'Zustand', icon: 'fas fa-database' },
             { name: 'GitHub API', icon: 'fab fa-github' }
         ],
+        screenshots: [
+            {
+                src: 'assets/work-log-manager/configuration.png',
+                alt: '工作日志管理工具 GitHub 配置页面',
+                title: 'GitHub 配置',
+                description: '配置 Personal Access Token 和日志仓库，首次使用时即可完成同步环境初始化。'
+            },
+            {
+                src: 'assets/work-log-manager/log-editor.png',
+                alt: '工作日志管理工具日志编辑页面',
+                title: '日志编辑',
+                description: '按日期记录今日工作与明日计划，支持多行内容输入和日志上传。'
+            },
+            {
+                src: 'assets/work-log-manager/history.png',
+                alt: '工作日志管理工具历史记录页面',
+                title: '历史记录',
+                description: '查看指定时间范围内的日志，并提供编辑、删除和工作总结功能。'
+            }
+        ],
         features: [
             { title: '每日记录', description: '按日期记录今日工作和明日计划，自动生成清晰的日志结构' },
             { title: 'GitHub 同步', description: '通过 GitHub API 自动创建仓库并上传日志，便于版本化保存' },
@@ -170,6 +190,24 @@ function displayProjectDetail() {
             ${project.liveLabel || '访问项目'}
         </a>
     ` : '';
+    const screenshotsHTML = project.screenshots ? `
+        <div class="project-section">
+            <h2>界面展示</h2>
+            <div class="screenshot-gallery">
+                ${project.screenshots.map(screenshot => `
+                    <figure class="screenshot-card">
+                        <a href="${screenshot.src}" target="_blank" rel="noopener noreferrer">
+                            <img src="${screenshot.src}" alt="${screenshot.alt}" loading="lazy">
+                        </a>
+                        <figcaption>
+                            <h3>${screenshot.title}</h3>
+                            <p>${screenshot.description}</p>
+                        </figcaption>
+                    </figure>
+                `).join('')}
+            </div>
+        </div>
+    ` : '';
 
     document.getElementById('projectDetail').innerHTML = `
         <a href="index.html#projects" class="back-button">
@@ -191,6 +229,8 @@ function displayProjectDetail() {
             <h2>技术栈</h2>
             <div class="tech-grid">${technologiesHTML}</div>
         </div>
+
+        ${screenshotsHTML}
 
         <div class="project-section">
             <h2>核心功能</h2>
