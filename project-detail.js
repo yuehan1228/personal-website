@@ -86,9 +86,9 @@ const projectDetails = {
     },
     4: {
         title: '4D 点云车道线检测',
-        description: '面向全天候自动驾驶场景，以连续 4D 激光点云为输入，构建车道线实例分割和实时可视化流程。',
+        description: '面向全天候自动驾驶场景，从连续 4D 激光点云中提取车道线实例，并恢复可用于定位和规划的连续道路几何结构。',
         tags: ['Python', 'PyTorch', 'K-Lane', 'Open3D'],
-        details: '项目将 10 Hz 连续点云按雷达 ego-pose 拆分为单帧数据，再投影至 BEV 平面并栅格化，以高度和反射强度构建训练样本。模型完成车道线实例分割后，通过聚类与拟合将离散检测结果合并为连续车道线，同时将完整 4D 标签同步转换为单帧真值。',
+        details: '项目将 10 Hz 连续点云按雷达 ego-pose 拆分为单帧数据，再投影至 BEV 平面并栅格化，以高度和反射强度构建训练样本。模型完成车道线实例分割后，通过聚类、排序与曲线拟合将离散预测恢复为连续车道线。最终结果在长直道、多车道及汇入结构、弯道等场景中进行三维点云可视化，并结合相机画面核对检测结果与真实道路结构的一致性。',
         technologies: [
             { name: 'Python', icon: 'fab fa-python' },
             { name: 'PyTorch', icon: 'fas fa-brain' },
@@ -96,19 +96,43 @@ const projectDetails = {
             { name: 'Open3D', icon: 'fas fa-cubes' },
             { name: 'OpenCV', icon: 'fas fa-eye' }
         ],
+        galleryTitle: '检测成果',
+        screenshots: [
+            {
+                src: 'assets/lane-detection/multi-lane.png',
+                alt: '4D 点云多车道场景检测结果',
+                title: '多车道结构检测',
+                description: '在道路结构较复杂的多车道场景中区分车道线实例，并保持横向车道拓扑关系。'
+            },
+            {
+                src: 'assets/lane-detection/long-range-road.png',
+                alt: '4D 点云长距离道路车道线检测结果',
+                title: '长距离连续检测',
+                description: '在大范围点云中恢复连续车道线，并与右上角同步相机画面中的真实道路结构对应。'
+            },
+            {
+                src: 'assets/lane-detection/curved-road.png',
+                alt: '4D 点云弯道车道线检测结果',
+                title: '弯道曲线检测',
+                description: '在道路曲率明显变化的场景中保持车道线连续性，同时输出中心采样点作为轨迹参考。'
+            }
+        ],
         features: [
             { title: '4D 数据处理', description: '基于 ego-pose 将连续时空点云拆分并对齐为可训练的单帧样本' },
             { title: 'BEV 特征构建', description: '将高度与反射强度编码为栅格图像通道，保留车道线几何和强度特征' },
             { title: '实例分割', description: '使用 K-Lane 完成点云车道线检测与实例级区分' },
-            { title: '几何后处理', description: '通过聚类和拟合将离散车道线段恢复为连续结构' },
+            { title: '连续曲线恢复', description: '对离散预测点进行聚类、排序和拟合，输出连续且具有实例区分的车道线' },
+            { title: '复杂场景适应', description: '在长直道、多车道、道路汇入和弯道场景中保持对道路几何结构的连续表达' },
+            { title: '多模态结果核验', description: '将三维点云检测结果与同步相机画面对应展示，便于核对车道拓扑和曲率变化' },
+            { title: '轨迹信息提取', description: '在车道线结果基础上生成中心采样点，为后续车辆定位和轨迹规划提供几何参考' },
             { title: '效率提升', description: '用于辅助标注后，相比纯人工流程效率提升约 30%' }
         ]
     },
     5: {
-        title: '2D 小目标检测',
-        description: '针对特征稀疏、定位敏感和上下文依赖等难点，从数据、网络结构和损失设计多个方向优化小目标检测。',
-        tags: ['DETR', 'DINOv2', 'PyTorch', '目标检测'],
-        details: '项目以 DETR 架构为基础，通过 Dense O2O Matching 提升正样本密度，引入 DINOv2 自监督骨干增强低分辨目标表征，并使用分布式边界框回归、解码器自蒸馏和 MAL 匹配质量建模改善定位稳定性与训练收敛。在统一数据集条件下完成与主流模型的对比评测。',
+        title: 'SD-DETR 2D 小目标检测',
+        description: '针对小目标特征表达薄弱、定位敏感和上下文依赖强等难点，对 DETR 的匹配、骨干网络、边界框回归和蒸馏策略进行系统优化。',
+        tags: ['SD-DETR', 'DINOv2', 'PyTorch', '小目标检测'],
+        details: 'SD-DETR 面向低像素占比目标构建高质量检测方案。模型使用 Dense O2O Matching 打破一对一匹配的稀疏监督瓶颈，以 DINOv2 自监督骨干提取更具泛化能力的语义特征；通过细粒度分布优化 FDR 将边界框回归由点估计转化为概率分布估计，并使用全局最优自蒸馏 GO-LSD 将深层解码器知识传递至浅层。匹配感知损失 MAL 根据匹配质量动态调整监督强度，抑制低质量样本对训练稳定性的干扰。',
         technologies: [
             { name: 'Python', icon: 'fab fa-python' },
             { name: 'PyTorch', icon: 'fas fa-brain' },
@@ -116,12 +140,57 @@ const projectDetails = {
             { name: 'DINOv2', icon: 'fas fa-network-wired' },
             { name: 'YOLO', icon: 'fas fa-crosshairs' }
         ],
+        metrics: [
+            { value: '52.3%', label: '小目标 mAP 50:95' },
+            { value: '85.9', label: 'Pixel Recall（x10^-4）' },
+            { value: '24.3s', label: '50 张图平均标注时间' },
+            { value: '0.763', label: '辅助标注 mean-IoU' }
+        ],
+        galleryTitle: '技术方案与实验结果',
+        screenshots: [
+            {
+                src: 'assets/sd-detr/architecture.png',
+                alt: 'SD-DETR 模型架构图',
+                title: '模型架构',
+                description: '以 DINOv2 编码器和多层解码器为基础，通过分布式边界框优化逐层修正初始检测框。'
+            },
+            {
+                src: 'assets/sd-detr/small-object-map.png',
+                alt: '不同模型在小目标验证集上的 mAP 对比',
+                title: '小目标精度对比',
+                description: 'SD-DETR-L 在 8.7k 小目标验证集上的 mAP 50:95 达到 52.3%，优于对比模型。'
+            },
+            {
+                src: 'assets/sd-detr/pixel-recall.png',
+                alt: '不同模型的小目标 Pixel Recall 对比',
+                title: '像素召回能力',
+                description: 'SD-DETR-L 的 Pixel Recall 达到 85.9（x10^-4），体现出更强的小目标像素覆盖能力。'
+            },
+            {
+                src: 'assets/sd-detr/accuracy-latency.png',
+                alt: 'SD-DETR 精度与推理延迟对比',
+                title: '精度与延迟权衡',
+                description: '在 3090 GPU 上对比不同规模模型，展示 SD-DETR 在精度提升与推理成本之间的权衡。'
+            },
+            {
+                src: 'assets/sd-detr/training-convergence.png',
+                alt: 'SD-DETR 训练轮次与 AP 收敛曲线',
+                title: '训练收敛表现',
+                description: 'SD-DETR-L 在相同训练轮次下保持更高 AP，Dense O2O Matching 有效改善训练效率。'
+            },
+            {
+                src: 'assets/sd-detr/annotation-efficiency.png',
+                alt: '不同模型辅助标注的 mean-IoU 和标注时间对比',
+                title: '辅助标注实验',
+                description: '50 张图像实验中，SD-DETR-L 达到 0.763 mean-IoU，平均标注时间降至 24.3 秒。'
+            }
+        ],
         features: [
-            { title: '稠密匹配', description: '使用 Dense O2O Matching 增加正样本监督并加快模型收敛' },
-            { title: '自监督骨干', description: '引入 DINOv2 提升对低分辨率和弱纹理目标的特征表达能力' },
-            { title: '稳定定位', description: '将边界框回归由点估计改为分布估计，降低小目标坐标抖动' },
-            { title: '量化效果', description: '小目标 mAP 50:95 达到 52.3%，领先对比最佳模型至少 3 个百分点' },
-            { title: '辅助标注', description: '在辅助标注实验中，相比纯人工流程效率提升 70% 以上' }
+            { title: 'Dense O2O Matching', description: '提高正样本密度，缓解 DETR 稀疏监督和小目标训练冷启动问题' },
+            { title: 'DINOv2 Backbone', description: '利用自监督预训练学习更泛化的底层视觉模式，增强低分辨率目标表征' },
+            { title: 'FDR 细粒度分布优化', description: '独立建模并微调边界框各条边，将点回归转化为分布估计以提升定位稳定性' },
+            { title: 'GO-LSD 自蒸馏', description: '将最后一层解码器特征蒸馏至浅层，在较低额外开销下增强早期特征' },
+            { title: 'MAL 匹配感知损失', description: '动态区分高质量和低质量匹配，降低噪声监督并提升训练稳定性' }
         ]
     },
     6: {
@@ -192,7 +261,7 @@ function displayProjectDetail() {
     ` : '';
     const screenshotsHTML = project.screenshots ? `
         <div class="project-section">
-            <h2>界面展示</h2>
+            <h2>${project.galleryTitle || '界面展示'}</h2>
             <div class="screenshot-gallery">
                 ${project.screenshots.map(screenshot => `
                     <figure class="screenshot-card">
@@ -204,6 +273,19 @@ function displayProjectDetail() {
                             <p>${screenshot.description}</p>
                         </figcaption>
                     </figure>
+                `).join('')}
+            </div>
+        </div>
+    ` : '';
+    const metricsHTML = project.metrics ? `
+        <div class="project-section">
+            <h2>关键指标</h2>
+            <div class="metrics-grid">
+                ${project.metrics.map(metric => `
+                    <div class="metric-card">
+                        <strong>${metric.value}</strong>
+                        <span>${metric.label}</span>
+                    </div>
                 `).join('')}
             </div>
         </div>
@@ -224,6 +306,8 @@ function displayProjectDetail() {
             <h2>项目概述</h2>
             <p>${project.details}</p>
         </div>
+
+        ${metricsHTML}
 
         <div class="project-section">
             <h2>技术栈</h2>
