@@ -24,6 +24,7 @@ fi
 
 # GitHub 仓库地址
 GITHUB_REPO="https://github.com/yuehan1228/personal-website.git"
+PAGES_URL="https://yuehan1228.github.io/personal-website/"
 
 echo -e "${GREEN}个人主页部署脚本 - GitHub Pages${NC}"
 echo "======================================"
@@ -121,10 +122,10 @@ case $choice in
             current_branch="main"
         fi
         
-        # 检查是否有未提交的更改
-        if ! git diff-index --quiet HEAD -- 2>/dev/null; then
+        # 检查是否有未提交的更改（包括新文件）
+        if [ -n "$(git status --porcelain)" ]; then
             echo -e "${YELLOW}检测到未提交的更改，正在提交...${NC}"
-            git add .
+            git add -A
             read -p "请输入提交信息 (直接回车使用默认): " commit_msg
             if [ -z "$commit_msg" ]; then
                 commit_msg="Update website - $(date +'%Y-%m-%d %H:%M:%S')"
@@ -153,6 +154,40 @@ case $choice in
                 exit 1
             }
         fi
+
+        # Git push 成功后，GitHub Pages 仍需要时间构建并刷新 CDN。
+        # 通过对比线上和本地首页哈希，确认最新内容已经真正发布。
+        echo ""
+        echo -e "${BLUE}正在等待 GitHub Pages 更新...${NC}"
+        pages_ready=false
+        if command -v curl > /dev/null 2>&1 && command -v sha256sum > /dev/null 2>&1; then
+            local_hash=$(sha256sum index.html | awk '{print $1}')
+            deployed_file=$(mktemp)
+            for attempt in $(seq 1 18); do
+                cache_buster=$(date +%s)
+                if curl -fsSL --max-time 15 \
+                    -H "Cache-Control: no-cache" \
+                    "${PAGES_URL}?v=${cache_buster}" \
+                    -o "$deployed_file"; then
+                    deployed_hash=$(sha256sum "$deployed_file" | awk '{print $1}')
+                    if [ "$local_hash" = "$deployed_hash" ]; then
+                        pages_ready=true
+                        break
+                    fi
+                fi
+                echo -e "${YELLOW}  Pages 仍在构建或刷新缓存，10 秒后重试 (${attempt}/18)...${NC}"
+                sleep 10
+            done
+            rm -f "$deployed_file"
+        else
+            echo -e "${YELLOW}未找到 curl 或 sha256sum，跳过线上内容校验。${NC}"
+        fi
+
+        if [ "$pages_ready" = true ]; then
+            echo -e "${GREEN}✓ GitHub Pages 已更新为当前版本${NC}"
+        else
+            echo -e "${YELLOW}尚未确认 Pages 更新。GitHub Pages 可能仍在构建，通常需要几分钟。${NC}"
+        fi
         
         echo ""
         echo -e "${GREEN}========================================${NC}"
@@ -161,7 +196,7 @@ case $choice in
         echo ""
         echo -e "${BLUE}访问地址：${NC}"
         echo -e "  本地: ${BLUE}http://localhost:8000${NC}"
-        echo -e "  GitHub Pages: ${BLUE}https://yuehan1228.github.io/personal-website${NC}"
+        echo -e "  GitHub Pages: ${BLUE}${PAGES_URL}?v=$(git rev-parse --short HEAD)${NC}"
         echo ""
         # echo "下一步操作："
         # echo -e "1. 访问 GitHub 仓库: ${BLUE}${GITHUB_REPO}${NC}"
@@ -184,4 +219,3 @@ case $choice in
         exit 1
         ;;
 esac
-
