@@ -1,84 +1,131 @@
 // 项目详情数据
 const projectDetails = {
     1: {
-        title: '项目一',
-        description: '这是一个重要的技术项目，展示了我在系统设计和开发方面的能力。项目涉及多个技术栈，包括前端、后端和数据库设计。',
-        tags: ['Web开发', '数据库', 'API设计'],
-        details: '这是一个全栈Web应用项目，采用了现代化的技术栈。前端使用响应式设计，确保在各种设备上都有良好的用户体验。后端采用RESTful API架构，实现了高效的数据交互。数据库设计考虑了数据一致性和查询性能，使用了索引优化和查询缓存等技术。项目成功部署并稳定运行，处理了大量并发请求。',
+        title: '自动化装船机系统',
+        description: '我负责的港口散货自动装船项目，通过智能感知、路径规划、运动控制与设备协同，推动装船作业自动化和无人化。',
+        tags: ['ROS 2', 'C++', '点云感知', '运动规划'],
+        details: '项目面向散货码头装船场景，构建了由雷达、3D 激光雷达、RTK-GNSS 和 PLC 等设备组成的 ROS 2 系统。我负责项目核心算法与系统集成，覆盖传感器驱动和融合、船舶舱口识别、物料分布分析、装船机位姿与轨迹规划、运动控制、碰撞检测和异常监控。系统采用模块化节点设计，通过自定义消息连接感知、规划、控制和设备接口。',
         technologies: [
-            { name: 'HTML5/CSS3', icon: 'fab fa-html5' },
-            { name: 'JavaScript', icon: 'fab fa-js' },
-            { name: 'Node.js', icon: 'fab fa-node-js' },
-            { name: 'MySQL', icon: 'fas fa-database' },
-            { name: 'Redis', icon: 'fas fa-server' }
+            { name: 'ROS 2', icon: 'fas fa-project-diagram' },
+            { name: 'C++', icon: 'fas fa-code' },
+            { name: 'PCL / OctoMap', icon: 'fas fa-cubes' },
+            { name: 'LiDAR / Radar', icon: 'fas fa-satellite-dish' },
+            { name: 'RTK-GNSS', icon: 'fas fa-location-arrow' },
+            { name: 'PLC / Modbus', icon: 'fas fa-industry' }
         ],
         features: [
-            { title: '响应式设计', description: '支持各种设备，提供一致的用户体验' },
-            { title: 'RESTful API', description: '标准化的API设计，易于集成和扩展' },
-            { title: '性能优化', description: '数据库索引和缓存机制，提升响应速度' },
-            { title: '高并发支持', description: '支持大量用户同时访问，系统稳定可靠' }
+            { title: '舱口自动识别', description: '利用 3D 点云与扫描线密度统计识别散货船舱口，并输出精确三维位置' },
+            { title: '多传感器融合', description: '融合激光雷达、毫米波雷达和 GNSS 数据，形成统一环境与设备状态表达' },
+            { title: '规划与控制', description: '结合三维路径规划和运动控制，实现装船机多自由度协同作业' },
+            { title: '主动安全', description: '通过体素地图、碰撞检测和异常监控保障自动化作业安全' },
+            { title: '设备集成', description: '对接雷达、GNSS、PLC 等工业设备，打通算法与现场执行链路' }
         ]
     },
     2: {
-        title: '项目二',
-        description: '移动应用开发项目，专注于用户体验和性能优化。项目成功上线并获得了用户的好评。',
-        tags: ['移动开发', 'UI/UX', '性能优化'],
-        details: '这是一个跨平台移动应用项目，专注于提供流畅的用户体验。在UI/UX设计方面，我们进行了大量的用户调研和A/B测试，确保界面直观易用。性能优化方面，我们实现了代码分割、懒加载、图片压缩等技术，将应用启动时间减少了40%，内存占用降低了30%。应用上线后获得了4.8分的用户评分。',
+        title: '雷达自动标定工具',
+        description: '基于 Flask 的雷达-GNSS 自动标定 Web 工具，将坐标解析、坐标系转换、参数求解和误差评估整合为可视化流程。',
+        tags: ['Python', 'Flask', 'NumPy', '坐标变换'],
+        details: '该工具用于装船机传感器标定。用户可以上传 CSV 或 TXT 格式的 GNSS 与雷达坐标，输入装船机回转、俯仰和臂架参数，自动求解雷达到目标坐标系的刚体变换矩阵并分析逐点误差。工具还提供泊位坐标系建立和大机姿态标定功能，支持从经纬度数据完成 WGS84 到局部坐标系转换，并通过回转与俯仰轨迹估计设备旋转中心。',
         technologies: [
-            { name: 'React Native', icon: 'fab fa-react' },
-            { name: 'Redux', icon: 'fas fa-code' },
-            { name: 'Firebase', icon: 'fas fa-fire' },
-            { name: 'Figma', icon: 'fab fa-figma' }
+            { name: 'Python', icon: 'fab fa-python' },
+            { name: 'Flask', icon: 'fas fa-server' },
+            { name: 'NumPy', icon: 'fas fa-calculator' },
+            { name: 'Pandas', icon: 'fas fa-table' },
+            { name: 'Pytest', icon: 'fas fa-vial' }
         ],
         features: [
-            { title: '跨平台支持', description: '一套代码同时支持iOS和Android平台' },
-            { title: '用户体验优化', description: '通过用户调研和A/B测试优化界面设计' },
-            { title: '性能提升', description: '启动时间减少40%，内存占用降低30%' },
-            { title: '用户好评', description: '应用商店评分4.8分，获得大量正面反馈' }
+            { title: '自动标定', description: '使用 SVD 求解最优旋转和平移参数，输出 4x4 齐次变换矩阵' },
+            { title: '多坐标系支持', description: '支持旋转中心、臂架和溜筒坐标系，以及 WGS84 到泊位坐标系转换' },
+            { title: '姿态参数估计', description: '通过二维和三维圆拟合计算装船机回转中心与俯仰中心' },
+            { title: '误差分析', description: '计算逐点欧氏距离误差，并汇总平均误差和最大误差' },
+            { title: '自动化测试', description: '覆盖坐标解析、变换求解、姿态计算和完整标定流程' }
         ]
     },
     3: {
-        title: '项目三',
-        description: '人工智能和机器学习项目，使用先进的算法解决实际问题。项目在准确性和效率方面都达到了预期目标。',
-        tags: ['机器学习', 'Python', '数据分析'],
-        details: '这是一个基于机器学习的智能分析系统。我们使用了多种算法模型，包括深度学习神经网络和传统机器学习算法。通过大量的数据训练和调优，模型的准确率达到了95%以上。项目还实现了实时数据处理和预测功能，能够快速响应业务需求。系统已经在生产环境中稳定运行，为业务决策提供了有力支持。',
+        title: '工作日志管理工具',
+        description: '一款用于记录每日工作、回顾历史内容并同步 GitHub 的跨平台桌面应用，让日常工作沉淀更轻量、更连续。',
+        tags: ['React', 'TypeScript', 'Tauri', 'GitHub API'],
+        details: '该工具使用 React 和 TypeScript 构建界面，以 Tauri 封装为跨平台桌面应用。用户配置 GitHub Token 和目标仓库后，可以记录今日工作与明日计划，并将日志自动上传到仓库。应用支持最近 7 天或 30 天的历史查询、已有日志编辑与删除，以及选定时间范围内的工作内容总结。',
         technologies: [
-            { name: 'Python', icon: 'fab fa-python' },
-            { name: 'TensorFlow', icon: 'fas fa-brain' },
-            { name: 'Scikit-learn', icon: 'fas fa-chart-line' },
-            { name: 'Pandas', icon: 'fas fa-table' },
-            { name: 'NumPy', icon: 'fas fa-calculator' }
+            { name: 'React 18', icon: 'fab fa-react' },
+            { name: 'TypeScript', icon: 'fas fa-code' },
+            { name: 'Tauri 2', icon: 'fas fa-desktop' },
+            { name: 'Ant Design', icon: 'fas fa-palette' },
+            { name: 'Zustand', icon: 'fas fa-database' },
+            { name: 'GitHub API', icon: 'fab fa-github' }
         ],
         features: [
-            { title: '高准确率', description: '模型准确率达到95%以上，满足业务需求' },
-            { title: '实时处理', description: '支持实时数据处理和预测功能' },
-            { title: '多种算法', description: '结合深度学习和传统机器学习算法' },
-            { title: '生产环境', description: '系统稳定运行，为业务决策提供支持' }
+            { title: '每日记录', description: '按日期记录今日工作和明日计划，自动生成清晰的日志结构' },
+            { title: 'GitHub 同步', description: '通过 GitHub API 自动创建仓库并上传日志，便于版本化保存' },
+            { title: '历史管理', description: '查看最近 7 天或 30 天日志，并支持编辑和删除已有内容' },
+            { title: '工作总结', description: '基于选定时间范围汇总日志内容，辅助周报和阶段复盘' },
+            { title: '跨平台体验', description: '使用 Tauri 提供轻量的 Windows、macOS 和 Linux 桌面体验' }
         ]
     },
     4: {
-        title: '项目四',
-        description: '云平台和微服务架构项目，实现了高可用性和可扩展性。项目支持大规模并发访问，稳定运行。',
-        tags: ['云服务', '微服务', 'DevOps'],
-        details: '这是一个基于微服务架构的云平台项目。系统采用了容器化部署，使用Docker和Kubernetes进行编排管理。微服务架构使得系统具有良好的可扩展性，可以根据负载动态调整资源。我们实现了服务发现、负载均衡、熔断降级等机制，确保系统的高可用性。通过CI/CD流水线，实现了自动化测试和部署，大大提高了开发效率。系统支持每秒处理数万次请求，可用性达到99.9%。',
+        title: '4D 点云车道线检测',
+        description: '面向全天候自动驾驶场景，以连续 4D 激光点云为输入，构建车道线实例分割和实时可视化流程。',
+        tags: ['Python', 'PyTorch', 'K-Lane', 'Open3D'],
+        details: '项目将 10 Hz 连续点云按雷达 ego-pose 拆分为单帧数据，再投影至 BEV 平面并栅格化，以高度和反射强度构建训练样本。模型完成车道线实例分割后，通过聚类与拟合将离散检测结果合并为连续车道线，同时将完整 4D 标签同步转换为单帧真值。',
         technologies: [
-            { name: 'Docker', icon: 'fab fa-docker' },
-            { name: 'Kubernetes', icon: 'fas fa-cubes' },
-            { name: 'Spring Cloud', icon: 'fas fa-cloud' },
-            { name: 'AWS', icon: 'fab fa-aws' },
-            { name: 'Jenkins', icon: 'fas fa-cog' }
+            { name: 'Python', icon: 'fab fa-python' },
+            { name: 'PyTorch', icon: 'fas fa-brain' },
+            { name: 'K-Lane', icon: 'fas fa-road' },
+            { name: 'Open3D', icon: 'fas fa-cubes' },
+            { name: 'OpenCV', icon: 'fas fa-eye' }
         ],
         features: [
-            { title: '微服务架构', description: '模块化设计，易于扩展和维护' },
-            { title: '容器化部署', description: '使用Docker和K8s实现自动化部署' },
-            { title: '高可用性', description: '服务发现、负载均衡、熔断降级机制' },
-            { title: 'CI/CD流水线', description: '自动化测试和部署，提高开发效率' },
-            { title: '高性能', description: '支持每秒数万次请求，可用性99.9%' }
+            { title: '4D 数据处理', description: '基于 ego-pose 将连续时空点云拆分并对齐为可训练的单帧样本' },
+            { title: 'BEV 特征构建', description: '将高度与反射强度编码为栅格图像通道，保留车道线几何和强度特征' },
+            { title: '实例分割', description: '使用 K-Lane 完成点云车道线检测与实例级区分' },
+            { title: '几何后处理', description: '通过聚类和拟合将离散车道线段恢复为连续结构' },
+            { title: '效率提升', description: '用于辅助标注后，相比纯人工流程效率提升约 30%' }
+        ]
+    },
+    5: {
+        title: '2D 小目标检测',
+        description: '针对特征稀疏、定位敏感和上下文依赖等难点，从数据、网络结构和损失设计多个方向优化小目标检测。',
+        tags: ['DETR', 'DINOv2', 'PyTorch', '目标检测'],
+        details: '项目以 DETR 架构为基础，通过 Dense O2O Matching 提升正样本密度，引入 DINOv2 自监督骨干增强低分辨目标表征，并使用分布式边界框回归、解码器自蒸馏和 MAL 匹配质量建模改善定位稳定性与训练收敛。在统一数据集条件下完成与主流模型的对比评测。',
+        technologies: [
+            { name: 'Python', icon: 'fab fa-python' },
+            { name: 'PyTorch', icon: 'fas fa-brain' },
+            { name: 'DETR', icon: 'fas fa-object-group' },
+            { name: 'DINOv2', icon: 'fas fa-network-wired' },
+            { name: 'YOLO', icon: 'fas fa-crosshairs' }
+        ],
+        features: [
+            { title: '稠密匹配', description: '使用 Dense O2O Matching 增加正样本监督并加快模型收敛' },
+            { title: '自监督骨干', description: '引入 DINOv2 提升对低分辨率和弱纹理目标的特征表达能力' },
+            { title: '稳定定位', description: '将边界框回归由点估计改为分布估计，降低小目标坐标抖动' },
+            { title: '量化效果', description: '小目标 mAP 50:95 达到 52.3%，领先对比最佳模型至少 3 个百分点' },
+            { title: '辅助标注', description: '在辅助标注实验中，相比纯人工流程效率提升 70% 以上' }
+        ]
+    },
+    6: {
+        title: '无人挖掘机铲斗检测',
+        description: '利用激光雷达和三维目标检测算法识别无人挖掘机铲斗位置，为远程操控提供地面落点参考。',
+        tags: ['PointPillars', 'OpenPCDet', 'TensorRT', 'ROS'],
+        details: '项目从 rosbag 点云解析、数据清洗与标注开始，基于 OpenPCDet 训练 PointPillars 模型，并利用预训练模型辅助扩充数据集。完成参数调优后，将模型转换为 ONNX 并部署到 NVIDIA Orin 工控机，使用 TensorRT 加速推理，最后通过 ROS 话题发布铲斗点云位置用于落点投影。',
+        technologies: [
+            { name: 'Python / C++', icon: 'fas fa-code' },
+            { name: 'ROS', icon: 'fas fa-project-diagram' },
+            { name: 'OpenPCDet', icon: 'fas fa-cubes' },
+            { name: 'PointPillars', icon: 'fas fa-border-all' },
+            { name: 'TensorRT', icon: 'fas fa-microchip' },
+            { name: 'NVIDIA Orin', icon: 'fas fa-memory' }
+        ],
+        features: [
+            { title: '点云数据闭环', description: '完成 rosbag 拆帧、清洗、标注、预训练推理和人工筛查流程' },
+            { title: '三维目标检测', description: '基于 PointPillars 检测铲斗三维位置并提取目标点云' },
+            { title: '边缘端部署', description: '将模型转换为 ONNX，并在 NVIDIA Orin 上通过 TensorRT 加速' },
+            { title: '实时性能', description: '部署后的模型推理速度达到 50 FPS，满足实时检测需求' },
+            { title: 'ROS 集成', description: '通过 ROS 话题发布检测结果，支持后续铲斗落点投影' }
         ]
     }
 };
 
-// 获取URL参数
+// 获取 URL 参数
 function getUrlParameter(name) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(name);
@@ -88,7 +135,7 @@ function getUrlParameter(name) {
 function displayProjectDetail() {
     const projectId = getUrlParameter('project');
     const project = projectDetails[projectId];
-    
+
     if (!project) {
         document.getElementById('projectDetail').innerHTML = `
             <div style="text-align: center; padding: 5rem 0;">
@@ -99,65 +146,50 @@ function displayProjectDetail() {
         `;
         return;
     }
-    
-    // 生成技术栈HTML
+
     const technologiesHTML = project.technologies.map(tech => `
         <div class="tech-card">
             <i class="${tech.icon}"></i>
             <h3>${tech.name}</h3>
         </div>
     `).join('');
-    
-    // 生成功能特性HTML
+
     const featuresHTML = project.features.map(feature => `
         <div class="feature-item">
             <h3>${feature.title}</h3>
             <p>${feature.description}</p>
         </div>
     `).join('');
-    
-    // 生成标签HTML
+
     const tagsHTML = project.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
-    
-    // 生成完整内容
-    const contentHTML = `
+
+    document.getElementById('projectDetail').innerHTML = `
         <a href="index.html#projects" class="back-button">
             <i class="fas fa-arrow-left"></i> 返回项目列表
         </a>
         <div class="project-header">
             <h1>${project.title}</h1>
-            <div class="project-meta">
-                ${tagsHTML}
-            </div>
+            <div class="project-meta">${tagsHTML}</div>
             <p class="project-description">${project.description}</p>
         </div>
-        
+
         <div class="project-section">
             <h2>项目概述</h2>
             <p>${project.details}</p>
         </div>
-        
+
         <div class="project-section">
             <h2>技术栈</h2>
-            <div class="tech-grid">
-                ${technologiesHTML}
-            </div>
+            <div class="tech-grid">${technologiesHTML}</div>
         </div>
-        
+
         <div class="project-section">
             <h2>核心功能</h2>
-            <div class="project-features">
-                ${featuresHTML}
-            </div>
+            <div class="project-features">${featuresHTML}</div>
         </div>
     `;
-    
-    document.getElementById('projectDetail').innerHTML = contentHTML;
-    
-    // 更新页面标题
+
     document.title = `${project.title} - 我的个人主页`;
 }
 
-// 页面加载时显示项目详情
 document.addEventListener('DOMContentLoaded', displayProjectDetail);
-

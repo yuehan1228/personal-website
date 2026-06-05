@@ -14,8 +14,8 @@
             <div class="nav-brand">我的主页</div>
             <ul class="nav-menu">
                 <li><a href="#about" class="nav-link">个人介绍</a></li>
-                <li><a href="#interests" class="nav-link">兴趣爱好</a></li>
-                <li><a href="#projects" class="nav-link">工作项目</a></li>
+                <li><a href="#experience" class="nav-link">职业经历</a></li>
+                <li><a href="#projects" class="nav-link">项目经历</a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -29,7 +29,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1 class="hero-title">欢迎来到岳晗的个人主页</h1>
-            <p class="hero-subtitle">探索我的世界，了解我的故事</p>
+            <p class="hero-subtitle">感知算法工程师 · 机器人与智能系统开发</p>
             <a href="#about" class="btn-primary">开始了解</a>
         </div>
         <div class="scroll-indicator">
@@ -49,24 +49,24 @@
                 </div>
                 <div class="about-text">
                     <h3>关于我</h3>
-                    <p>你好！欢迎来到我的个人主页。我是一名充满热情的专业人士，致力于在技术领域不断学习和成长。</p>
-                    <p>我拥有丰富的项目经验，擅长解决复杂的技术问题，并始终追求卓越。我相信持续学习和创新是推动个人和职业发展的关键。</p>
+                    <p>你好！我是一名感知算法工程师，拥有电子信息硕士背景，专注于港口自动化、机器人感知、二维与三维目标检测及工程软件开发。</p>
+                    <p>我具备从数据处理、模型训练和性能评测，到 ROS 系统集成、TensorRT 部署与现场调试的完整实践经验，致力于让算法稳定地解决真实工业场景中的问题。</p>
                     <div class="about-skills">
                         <div class="skill-item">
                             <i class="fas fa-code"></i>
-                            <span>编程开发</span>
+                            <span>Python / C++</span>
                         </div>
                         <div class="skill-item">
                             <i class="fas fa-cogs"></i>
-                            <span>系统设计</span>
+                            <span>ROS / Linux</span>
                         </div>
                         <div class="skill-item">
-                            <i class="fas fa-users"></i>
-                            <span>团队协作</span>
+                            <i class="fas fa-bullseye"></i>
+                            <span>2D / 3D 感知</span>
                         </div>
                         <div class="skill-item">
-                            <i class="fas fa-lightbulb"></i>
-                            <span>创新思维</span>
+                            <i class="fas fa-route"></i>
+                            <span>PyTorch / TensorRT</span>
                         </div>
                     </div>
                 </div>
@@ -74,75 +74,94 @@
         </div>
     </section>
 
-    <!-- 兴趣爱好部分 -->
-    <section id="interests" class="section interests-section">
+    <!-- 职业经历部分 -->
+    <section id="experience" class="section experience-section">
         <div class="container">
-            <h2 class="section-title">兴趣爱好</h2>
-            <div class="interests-grid">
-                <div class="interest-card">
-                    <div class="interest-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <h3>阅读</h3>
-                    <p>喜欢阅读技术书籍、科幻小说和人文历史类书籍，通过阅读不断拓展知识面。</p>
+            <h2 class="section-title">职业经历</h2>
+            <div class="experience-layout">
+                <div class="timeline">
+                    <article class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-heading">
+                                <div>
+                                    <h3>感知算法工程师</h3>
+                                    <p class="timeline-company">长沙盈海智能科技有限公司</p>
+                                </div>
+                                <span class="timeline-date">2025.08 起</span>
+                            </div>
+                            <p>负责港口自动化场景中的感知方案设计，以及舱口识别、舱口更新、物料分布等算法开发，并参与项目现场调试、维护和持续迭代。</p>
+                        </div>
+                    </article>
+                    <article class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-heading">
+                                <div>
+                                    <h3>算法工程师</h3>
+                                    <p class="timeline-company">北京星尘纪元智能科技有限公司</p>
+                                </div>
+                                <span class="timeline-date">2024.12 - 2025.08</span>
+                            </div>
+                            <p>负责视觉与点云项目的技术选型、数据预处理、模型训练调优和性能评测，围绕小目标检测与 4D 车道线任务优化网络和工程流程。</p>
+                        </div>
+                    </article>
+                    <article class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-heading">
+                                <div>
+                                    <h3>算法工程师实习生</h3>
+                                    <p class="timeline-company">北京拓疆者智能科技有限公司</p>
+                                </div>
+                                <span class="timeline-date">2024.04 - 2024.08</span>
+                            </div>
+                            <p>参与无人挖掘机铲斗三维检测项目，完成点云数据处理、PointPillars 训练，以及模型在 NVIDIA Orin 平台上的 TensorRT 部署。</p>
+                        </div>
+                    </article>
                 </div>
-                <div class="interest-card">
-                    <div class="interest-icon">
-                        <i class="fas fa-code"></i>
+                <aside class="education-panel">
+                    <div class="education-header">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>教育背景</h3>
                     </div>
-                    <h3>编程</h3>
-                    <p>热爱编程，喜欢探索新技术，在开源项目中贡献代码，享受解决问题的过程。</p>
-                </div>
-                <div class="interest-card">
-                    <div class="interest-icon">
-                        <i class="fas fa-camera"></i>
+                    <div class="education-item">
+                        <span class="education-date">2022.09 - 2025.04</span>
+                        <h4>天津理工大学</h4>
+                        <p>电子信息 · 硕士研究生</p>
                     </div>
-                    <h3>摄影</h3>
-                    <p>用镜头记录生活中的美好瞬间，喜欢拍摄风景、人像和街头摄影。</p>
-                </div>
-                <div class="interest-card">
-                    <div class="interest-icon">
-                        <i class="fas fa-music"></i>
+                    <div class="education-item">
+                        <span class="education-date">2018.09 - 2022.06</span>
+                        <h4>河南理工大学</h4>
+                        <p>计算机科学与技术 · 本科</p>
                     </div>
-                    <h3>音乐</h3>
-                    <p>喜欢听各种类型的音乐，偶尔也会弹奏乐器，音乐是我放松和灵感的重要来源。</p>
-                </div>
-                <div class="interest-card">
-                    <div class="interest-icon">
-                        <i class="fas fa-hiking"></i>
+                    <div class="education-extra">
+                        <i class="fas fa-language"></i>
+                        <span>CET-6，可阅读英文技术文档</span>
                     </div>
-                    <h3>旅行</h3>
-                    <p>热爱旅行，探索不同的文化和风景，旅行让我保持开放的心态和好奇心。</p>
-                </div>
-                <div class="interest-card">
-                    <div class="interest-icon">
-                        <i class="fas fa-gamepad"></i>
-                    </div>
-                    <h3>游戏</h3>
-                    <p>喜欢玩策略游戏和独立游戏，游戏不仅是娱乐，也是思考和学习的过程。</p>
-                </div>
+                </aside>
             </div>
         </div>
     </section>
 
-    <!-- 工作项目部分 -->
+    <!-- 项目经历部分 -->
     <section id="projects" class="section projects-section">
         <div class="container">
-            <h2 class="section-title">工作项目</h2>
+            <h2 class="section-title">项目经历</h2>
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
                         <div class="project-placeholder">
-                            <i class="fas fa-laptop-code"></i>
+                            <i class="fas fa-ship"></i>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3>项目一</h3>
-                        <p>这是一个重要的技术项目，展示了我在系统设计和开发方面的能力。项目涉及多个技术栈，包括前端、后端和数据库设计。</p>
+                        <h3>自动化装船机系统</h3>
+                        <p>我负责的港口散货自动装船项目，围绕多传感器感知、舱口识别、物料分布分析、路径规划、运动控制和安全防碰撞构建 ROS 2 系统。</p>
                         <div class="project-tags">
-                            <span class="tag">Web开发</span>
-                            <span class="tag">数据库</span>
-                            <span class="tag">API设计</span>
+                            <span class="tag">ROS 2</span>
+                            <span class="tag">C++</span>
+                            <span class="tag">点云感知</span>
                         </div>
                         <a href="project-detail.html?project=1" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
                     </div>
@@ -150,16 +169,16 @@
                 <div class="project-card">
                     <div class="project-image">
                         <div class="project-placeholder">
-                            <i class="fas fa-mobile-alt"></i>
+                            <i class="fas fa-crosshairs"></i>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3>项目二</h3>
-                        <p>移动应用开发项目，专注于用户体验和性能优化。项目成功上线并获得了用户的好评。</p>
+                        <h3>雷达自动标定工具</h3>
+                        <p>基于 Flask 的雷达-GNSS 自动标定 Web 工具，可完成多坐标系转换、刚体变换求解、标定误差分析，以及装船机回转与俯仰姿态标定。</p>
                         <div class="project-tags">
-                            <span class="tag">移动开发</span>
-                            <span class="tag">UI/UX</span>
-                            <span class="tag">性能优化</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Flask</span>
+                            <span class="tag">NumPy</span>
                         </div>
                         <a href="project-detail.html?project=2" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
                     </div>
@@ -167,16 +186,16 @@
                 <div class="project-card">
                     <div class="project-image">
                         <div class="project-placeholder">
-                            <i class="fas fa-robot"></i>
+                            <i class="fas fa-clipboard-list"></i>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3>项目三</h3>
-                        <p>人工智能和机器学习项目，使用先进的算法解决实际问题。项目在准确性和效率方面都达到了预期目标。</p>
+                        <h3>工作日志管理工具</h3>
+                        <p>面向日常工作记录的跨平台桌面应用，支持日志编辑、历史查询与 GitHub 自动同步，并提供按时间范围生成工作总结的能力。</p>
                         <div class="project-tags">
-                            <span class="tag">机器学习</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">数据分析</span>
+                            <span class="tag">React</span>
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">Tauri</span>
                         </div>
                         <a href="project-detail.html?project=3" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
                     </div>
@@ -184,18 +203,52 @@
                 <div class="project-card">
                     <div class="project-image">
                         <div class="project-placeholder">
-                            <i class="fas fa-server"></i>
+                            <i class="fas fa-road"></i>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3>项目四</h3>
-                        <p>云平台和微服务架构项目，实现了高可用性和可扩展性。项目支持大规模并发访问，稳定运行。</p>
+                        <h3>4D 点云车道线检测</h3>
+                        <p>以连续 4D 激光点云为输入，完成多帧数据拆分、BEV 样本构建、实例分割和车道线后处理，辅助标注效率提升约 30%。</p>
                         <div class="project-tags">
-                            <span class="tag">云服务</span>
-                            <span class="tag">微服务</span>
-                            <span class="tag">DevOps</span>
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">K-Lane</span>
+                            <span class="tag">Open3D</span>
                         </div>
                         <a href="project-detail.html?project=4" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-magnifying-glass-chart"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>2D 小目标检测</h3>
+                        <p>从匹配策略、骨干网络、边界框回归和自蒸馏等方向优化 DETR，小目标 mAP 50:95 达到 52.3%。</p>
+                        <div class="project-tags">
+                            <span class="tag">DETR</span>
+                            <span class="tag">DINOv2</span>
+                            <span class="tag">PyTorch</span>
+                        </div>
+                        <a href="project-detail.html?project=5" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-truck-monster"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>无人挖掘机铲斗检测</h3>
+                        <p>基于 PointPillars 检测铲斗三维位置，并将模型部署至 NVIDIA Orin，TensorRT 实时推理达到 50 FPS。</p>
+                        <div class="project-tags">
+                            <span class="tag">PointPillars</span>
+                            <span class="tag">TensorRT</span>
+                            <span class="tag">ROS</span>
+                        </div>
+                        <a href="project-detail.html?project=6" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -206,7 +259,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2024 我的个人主页. 保留所有权利.</p>
+                <p>&copy; 2025 我的个人主页. 保留所有权利.</p>
                 <div class="social-links">
                     <a href="#" class="social-link"><i class="fab fa-github"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
@@ -219,4 +272,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
