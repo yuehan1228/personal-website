@@ -24,4 +24,6 @@ npm-debug.log*
 # 临时文件
 *.tmp
 .cache/
-
+resume/
+.codex/
+.agents/

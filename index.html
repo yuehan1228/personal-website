@@ -50,8 +50,8 @@
                 </div>
                 <div class="about-text">
                     <h3>关于我</h3>
-                    <p>你好！我是一名感知算法工程师，拥有电子信息硕士背景，专注于港口自动化、机器人感知、二维与三维目标检测及工程软件开发。</p>
-                    <p>我具备从数据处理、模型训练和性能评测，到 ROS 系统集成、TensorRT 部署与现场调试的完整实践经验，致力于让算法稳定地解决真实工业场景中的问题。</p>
+                    <p>你好！我是一名感知算法工程师，拥有电子信息硕士背景，关注港口自动化、筒仓精准装车、装船机无人化和自动驾驶点云感知。</p>
+                    <p>我具备从数据处理、模型训练和性能评测，到 ROS 工程集成、PLC 联动、TensorRT 部署与现场调试的完整实践经验，也熟练使用 Claude Code、Codex 等 AI 编程工具提升开发、调试与文档整理效率。</p>
                     <div class="about-skills">
                         <div class="skill-item">
                             <i class="fas fa-code"></i>
@@ -67,7 +67,11 @@
                         </div>
                         <div class="skill-item">
                             <i class="fas fa-route"></i>
-                            <span>PyTorch / TensorRT</span>
+                            <span>PLC / TensorRT</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-wand-magic-sparkles"></i>
+                            <span>Claude Code / Codex</span>
                         </div>
                     </div>
                 </div>
@@ -142,7 +146,7 @@
                                 </div>
                                 <span class="timeline-date">2025.08 起</span>
                             </div>
-                            <p>负责港口自动化场景中的感知方案设计，以及舱口识别、舱口更新、物料分布等算法开发，并参与项目现场调试、维护和持续迭代。</p>
+                            <p>负责港口自动化场景中的感知方案设计，参与筒仓精准装车、装船机自动化等项目，覆盖点云融合、舱口识别、物料分布、PLC 联动和现场调试迭代。</p>
                         </div>
                     </article>
                     <article class="timeline-item">
@@ -221,35 +225,18 @@
                 <div class="project-card">
                     <div class="project-image">
                         <div class="project-placeholder">
-                            <i class="fas fa-crosshairs"></i>
+                            <i class="fas fa-warehouse"></i>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3>雷达自动标定工具</h3>
-                        <p>基于 Flask 的雷达-GNSS 自动标定 Web 工具，可完成多坐标系转换、刚体变换求解、标定误差分析，以及装船机回转与俯仰姿态标定。</p>
+                        <h3>筒仓精准装车项目</h3>
+                        <p>面向筒仓装车场景，融合南北双激光雷达点云，输出车体尺寸、体积、停靠误差和移动方向，并通过 Modbus TCP 与 PLC 联动。</p>
                         <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Flask</span>
-                            <span class="tag">NumPy</span>
+                            <span class="tag">ROS 1</span>
+                            <span class="tag">PCL</span>
+                            <span class="tag">Modbus TCP</span>
                         </div>
                         <a href="project-detail.html?project=2" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-clipboard-list"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>工作日志管理工具</h3>
-                        <p>面向日常工作记录的跨平台桌面应用，支持日志编辑、历史查询与 GitHub 自动同步，并提供按时间范围生成工作总结的能力。</p>
-                        <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">Tauri</span>
-                        </div>
-                        <a href="project-detail.html?project=3" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="project-card">
@@ -266,7 +253,7 @@
                             <span class="tag">K-Lane</span>
                             <span class="tag">Open3D</span>
                         </div>
-                        <a href="project-detail.html?project=4" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                        <a href="project-detail.html?project=3" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="project-card">
@@ -276,14 +263,14 @@
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3>2D 小目标检测</h3>
-                        <p>从匹配策略、骨干网络、边界框回归和自蒸馏等方向优化 DETR，小目标 mAP 50:95 达到 52.3%。</p>
+                        <h3>SD-DETR 2D 小目标检测</h3>
+                        <p>从稠密匹配、自监督骨干、分布式回归和自蒸馏等方向优化 DETR，小目标 mAP 50:95 达到 52.3%。</p>
                         <div class="project-tags">
-                            <span class="tag">DETR</span>
+                            <span class="tag">SD-DETR</span>
                             <span class="tag">DINOv2</span>
                             <span class="tag">PyTorch</span>
                         </div>
-                        <a href="project-detail.html?project=5" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                        <a href="project-detail.html?project=4" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="project-card">
@@ -300,7 +287,41 @@
                             <span class="tag">TensorRT</span>
                             <span class="tag">ROS</span>
                         </div>
+                        <a href="project-detail.html?project=5" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-crosshairs"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>雷达自动标定工具</h3>
+                        <p>基于 Flask 的雷达-GNSS 自动标定 Web 工具，可完成多坐标系转换、刚体变换求解、标定误差分析，以及装船机回转与俯仰姿态标定。</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Flask</span>
+                            <span class="tag">NumPy</span>
+                        </div>
                         <a href="project-detail.html?project=6" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>工作日志管理工具</h3>
+                        <p>面向日常工作记录的跨平台桌面应用，支持日志编辑、历史查询与 GitHub 自动同步，并提供按时间范围生成工作总结的能力。</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">Tauri</span>
+                        </div>
+                        <a href="project-detail.html?project=7" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>

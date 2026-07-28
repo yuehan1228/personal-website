@@ -22,69 +22,27 @@ const projectDetails = {
         ]
     },
     2: {
-        title: '雷达自动标定工具',
-        description: '基于 Flask 的雷达-GNSS 自动标定 Web 工具，将坐标解析、坐标系转换、参数求解和误差评估整合为可视化流程。',
-        tags: ['Python', 'Flask', 'NumPy', '坐标变换'],
-        liveUrl: 'https://calibration-tool-ca9q.onrender.com',
-        liveLabel: '在线体验',
-        details: '该工具用于装船机传感器标定。用户可以上传 CSV 或 TXT 格式的 GNSS 与雷达坐标，输入装船机回转、俯仰和臂架参数，自动求解雷达到目标坐标系的刚体变换矩阵并分析逐点误差。工具还提供泊位坐标系建立和大机姿态标定功能，支持从经纬度数据完成 WGS84 到局部坐标系转换，并通过回转与俯仰轨迹估计设备旋转中心。',
+        title: '筒仓精准装车项目',
+        description: '面向筒仓装车场景的激光雷达感知与 PLC 联动项目，输出车体状态、装载体积和停靠控制信息。',
+        tags: ['ROS 1', 'C++', 'PCL', 'Modbus TCP'],
+        details: '项目基于 ROS 1 和 PCL 构建前端激光雷达检测节点，订阅南北两路 Livox 点云，完成坐标变换、时间对齐、短时多帧融合和柱状裁剪预处理。算法输出地面点、非地面点、聚类点云和 RViz Marker，同时发布车体中心、尺寸、体积、停靠误差、移动方向、急停和雷达工作状态等控制信息。通信侧通过 Modbus TCP 将检测状态写入 PLC 寄存器和线圈，并读取装载状态、载重、密度和雷达停机信号。',
         technologies: [
-            { name: 'Python', icon: 'fab fa-python' },
-            { name: 'Flask', icon: 'fas fa-server' },
-            { name: 'NumPy', icon: 'fas fa-calculator' },
-            { name: 'Pandas', icon: 'fas fa-table' },
-            { name: 'Pytest', icon: 'fas fa-vial' }
+            { name: 'C++', icon: 'fas fa-code' },
+            { name: 'ROS 1', icon: 'fas fa-project-diagram' },
+            { name: 'PCL', icon: 'fas fa-cubes' },
+            { name: 'Livox LiDAR', icon: 'fas fa-satellite-dish' },
+            { name: 'Modbus TCP', icon: 'fas fa-network-wired' },
+            { name: 'RViz', icon: 'fas fa-eye' }
         ],
         features: [
-            { title: '自动标定', description: '使用 SVD 求解最优旋转和平移参数，输出 4x4 齐次变换矩阵' },
-            { title: '多坐标系支持', description: '支持旋转中心、臂架和溜筒坐标系，以及 WGS84 到泊位坐标系转换' },
-            { title: '姿态参数估计', description: '通过二维和三维圆拟合计算装船机回转中心与俯仰中心' },
-            { title: '误差分析', description: '计算逐点欧氏距离误差，并汇总平均误差和最大误差' },
-            { title: '自动化测试', description: '覆盖坐标解析、变换求解、姿态计算和完整标定流程' }
+            { title: '双雷达点云融合', description: '融合南北两路点云，完成坐标统一、时间对齐和多帧累积' },
+            { title: '车体状态感知', description: '输出车体中心、尺寸、体积、停靠误差和移动方向等装车控制信息' },
+            { title: '点云处理链路', description: '发布地面点、非地面点、聚类点云和检测框，便于现场调试和结果核验' },
+            { title: 'PLC 联动', description: '通过 Modbus TCP 写入寄存器和线圈，并读取载重、密度、装载状态等信号' },
+            { title: '异常状态输出', description: '输出急停、障碍物存在、雷达连接与工作状态，为装车安全提供依据' }
         ]
     },
     3: {
-        title: '工作日志管理工具',
-        description: '一款用于记录每日工作、回顾历史内容并同步 GitHub 的跨平台桌面应用，让日常工作沉淀更轻量、更连续。',
-        tags: ['React', 'TypeScript', 'Tauri', 'GitHub API'],
-        details: '该工具使用 React 和 TypeScript 构建界面，以 Tauri 封装为跨平台桌面应用。用户配置 GitHub Token 和目标仓库后，可以记录今日工作与明日计划，并将日志自动上传到仓库。应用支持最近 7 天或 30 天的历史查询、已有日志编辑与删除，以及选定时间范围内的工作内容总结。',
-        technologies: [
-            { name: 'React 18', icon: 'fab fa-react' },
-            { name: 'TypeScript', icon: 'fas fa-code' },
-            { name: 'Tauri 2', icon: 'fas fa-desktop' },
-            { name: 'Ant Design', icon: 'fas fa-palette' },
-            { name: 'Zustand', icon: 'fas fa-database' },
-            { name: 'GitHub API', icon: 'fab fa-github' }
-        ],
-        screenshots: [
-            {
-                src: 'assets/work-log-manager/configuration.png',
-                alt: '工作日志管理工具 GitHub 配置页面',
-                title: 'GitHub 配置',
-                description: '配置 Personal Access Token 和日志仓库，首次使用时即可完成同步环境初始化。'
-            },
-            {
-                src: 'assets/work-log-manager/log-editor.png',
-                alt: '工作日志管理工具日志编辑页面',
-                title: '日志编辑',
-                description: '按日期记录今日工作与明日计划，支持多行内容输入和日志上传。'
-            },
-            {
-                src: 'assets/work-log-manager/history.png',
-                alt: '工作日志管理工具历史记录页面',
-                title: '历史记录',
-                description: '查看指定时间范围内的日志，并提供编辑、删除和工作总结功能。'
-            }
-        ],
-        features: [
-            { title: '每日记录', description: '按日期记录今日工作和明日计划，自动生成清晰的日志结构' },
-            { title: 'GitHub 同步', description: '通过 GitHub API 自动创建仓库并上传日志，便于版本化保存' },
-            { title: '历史管理', description: '查看最近 7 天或 30 天日志，并支持编辑和删除已有内容' },
-            { title: '工作总结', description: '基于选定时间范围汇总日志内容，辅助周报和阶段复盘' },
-            { title: '跨平台体验', description: '使用 Tauri 提供轻量的 Windows、macOS 和 Linux 桌面体验' }
-        ]
-    },
-    4: {
         title: '4D 点云车道线检测',
         description: '面向全天候自动驾驶场景，从连续 4D 激光点云中提取车道线实例，并恢复可用于定位和规划的连续道路几何结构。',
         tags: ['Python', 'PyTorch', 'K-Lane', 'Open3D'],
@@ -128,7 +86,7 @@ const projectDetails = {
             { title: '效率提升', description: '用于辅助标注后，相比纯人工流程效率提升约 30%' }
         ]
     },
-    5: {
+    4: {
         title: 'SD-DETR 2D 小目标检测',
         description: '针对小目标特征表达薄弱、定位敏感和上下文依赖强等难点，对 DETR 的匹配、骨干网络、边界框回归和蒸馏策略进行系统优化。',
         tags: ['SD-DETR', 'DINOv2', 'PyTorch', '小目标检测'],
@@ -193,7 +151,7 @@ const projectDetails = {
             { title: 'MAL 匹配感知损失', description: '动态区分高质量和低质量匹配，降低噪声监督并提升训练稳定性' }
         ]
     },
-    6: {
+    5: {
         title: '无人挖掘机铲斗检测',
         description: '利用激光雷达和三维目标检测算法识别无人挖掘机铲斗位置，为远程操控提供地面落点参考。',
         tags: ['PointPillars', 'OpenPCDet', 'TensorRT', 'ROS'],
@@ -212,6 +170,69 @@ const projectDetails = {
             { title: '边缘端部署', description: '将模型转换为 ONNX，并在 NVIDIA Orin 上通过 TensorRT 加速' },
             { title: '实时性能', description: '部署后的模型推理速度达到 50 FPS，满足实时检测需求' },
             { title: 'ROS 集成', description: '通过 ROS 话题发布检测结果，支持后续铲斗落点投影' }
+        ]
+    },
+    6: {
+        title: '雷达自动标定工具',
+        description: '基于 Flask 的雷达-GNSS 自动标定 Web 工具，将坐标解析、坐标系转换、参数求解和误差评估整合为可视化流程。',
+        tags: ['Python', 'Flask', 'NumPy', '坐标变换'],
+        liveUrl: 'https://calibration-tool-ca9q.onrender.com',
+        liveLabel: '在线体验',
+        details: '该工具用于装船机传感器标定。用户可以上传 CSV 或 TXT 格式的 GNSS 与雷达坐标，输入装船机回转、俯仰和臂架参数，自动求解雷达到目标坐标系的刚体变换矩阵并分析逐点误差。工具还提供泊位坐标系建立和大机姿态标定功能，支持从经纬度数据完成 WGS84 到局部坐标系转换，并通过回转与俯仰轨迹估计设备旋转中心。',
+        technologies: [
+            { name: 'Python', icon: 'fab fa-python' },
+            { name: 'Flask', icon: 'fas fa-server' },
+            { name: 'NumPy', icon: 'fas fa-calculator' },
+            { name: 'Pandas', icon: 'fas fa-table' },
+            { name: 'Pytest', icon: 'fas fa-vial' }
+        ],
+        features: [
+            { title: '自动标定', description: '使用 SVD 求解最优旋转和平移参数，输出 4x4 齐次变换矩阵' },
+            { title: '多坐标系支持', description: '支持旋转中心、臂架和溜筒坐标系，以及 WGS84 到泊位坐标系转换' },
+            { title: '姿态参数估计', description: '通过二维和三维圆拟合计算装船机回转中心与俯仰中心' },
+            { title: '误差分析', description: '计算逐点欧氏距离误差，并汇总平均误差和最大误差' },
+            { title: '自动化测试', description: '覆盖坐标解析、变换求解、姿态计算和完整标定流程' }
+        ]
+    },
+    7: {
+        title: '工作日志管理工具',
+        description: '一款用于记录每日工作、回顾历史内容并同步 GitHub 的跨平台桌面应用，让日常工作沉淀更轻量、更连续。',
+        tags: ['React', 'TypeScript', 'Tauri', 'GitHub API'],
+        details: '该工具使用 React 和 TypeScript 构建界面，以 Tauri 封装为跨平台桌面应用。用户配置 GitHub Token 和目标仓库后，可以记录今日工作与明日计划，并将日志自动上传到仓库。应用支持最近 7 天或 30 天的历史查询、已有日志编辑与删除，以及选定时间范围内的工作内容总结。',
+        technologies: [
+            { name: 'React 18', icon: 'fab fa-react' },
+            { name: 'TypeScript', icon: 'fas fa-code' },
+            { name: 'Tauri 2', icon: 'fas fa-desktop' },
+            { name: 'Ant Design', icon: 'fas fa-palette' },
+            { name: 'Zustand', icon: 'fas fa-database' },
+            { name: 'GitHub API', icon: 'fab fa-github' }
+        ],
+        screenshots: [
+            {
+                src: 'assets/work-log-manager/configuration.png',
+                alt: '工作日志管理工具 GitHub 配置页面',
+                title: 'GitHub 配置',
+                description: '配置 Personal Access Token 和日志仓库，首次使用时即可完成同步环境初始化。'
+            },
+            {
+                src: 'assets/work-log-manager/log-editor.png',
+                alt: '工作日志管理工具日志编辑页面',
+                title: '日志编辑',
+                description: '按日期记录今日工作与明日计划，支持多行内容输入和日志上传。'
+            },
+            {
+                src: 'assets/work-log-manager/history.png',
+                alt: '工作日志管理工具历史记录页面',
+                title: '历史记录',
+                description: '查看指定时间范围内的日志，并提供编辑、删除和工作总结功能。'
+            }
+        ],
+        features: [
+            { title: '每日记录', description: '按日期记录今日工作和明日计划，自动生成清晰的日志结构' },
+            { title: 'GitHub 同步', description: '通过 GitHub API 自动创建仓库并上传日志，便于版本化保存' },
+            { title: '历史管理', description: '查看最近 7 天或 30 天日志，并支持编辑和删除已有内容' },
+            { title: '工作总结', description: '基于选定时间范围汇总日志内容，辅助周报和阶段复盘' },
+            { title: '跨平台体验', description: '使用 Tauri 提供轻量的 Windows、macOS 和 Linux 桌面体验' }
         ]
     }
 };
