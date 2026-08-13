@@ -2,23 +2,25 @@
 const projectDetails = {
     1: {
         title: '自动化装船机系统',
-        description: '面向港口散货装载场景的自动化系统，集成智能感知、路径规划、运动控制与设备协同。',
-        tags: ['ROS 2', 'C++', '点云感知', '运动规划'],
-        details: '项目面向散货码头装船场景，构建了由雷达、3D 激光雷达、RTK-GNSS 和 PLC 等设备组成的 ROS 2 系统。我负责项目核心算法与系统集成，覆盖传感器驱动和融合、船舶舱口识别、物料分布分析、装船机位姿与轨迹规划、运动控制、碰撞检测和异常监控。系统采用模块化节点设计，通过自定义消息连接感知、规划、控制和设备接口。',
+        description: '面向港口散货装载场景的自动化系统，集成智能感知、路径规划、运动控制、设备协同与可视化监控。',
+        tags: ['ROS 2', 'C++', '点云感知', 'Qt 5', '运动规划'],
+        details: '项目面向散货码头装船场景，构建了由雷达、3D 激光雷达、RTK-GNSS 和 PLC 等设备组成的 ROS 2 系统。我负责项目核心算法与系统集成，覆盖传感器驱动和融合、船舶舱口识别、物料分布分析、装船机位姿与轨迹规划、运动控制、碰撞检测和异常监控。系统采用模块化节点设计，通过自定义消息连接感知、规划、控制和设备接口；配套开发 Qt 5 上位机，为司机室和控制室提供运行监控、点云可视化、参数调试与日志分析能力。',
         technologies: [
             { name: 'ROS 2', icon: 'fas fa-project-diagram' },
             { name: 'C++', icon: 'fas fa-code' },
             { name: 'PCL / OctoMap', icon: 'fas fa-cubes' },
             { name: 'LiDAR / Radar', icon: 'fas fa-satellite-dish' },
             { name: 'RTK-GNSS', icon: 'fas fa-location-arrow' },
-            { name: 'PLC / Modbus', icon: 'fas fa-industry' }
+            { name: 'PLC / Modbus', icon: 'fas fa-industry' },
+            { name: 'Qt 5 / OpenGL', icon: 'fas fa-desktop' }
         ],
         features: [
             { title: '舱口自动识别', description: '利用 3D 点云与扫描线密度统计识别散货船舱口，并输出精确三维位置' },
             { title: '多传感器融合', description: '融合激光雷达、毫米波雷达和 GNSS 数据，形成统一环境与设备状态表达' },
             { title: '规划与控制', description: '结合三维路径规划和运动控制，实现装船机多自由度协同作业' },
             { title: '主动安全', description: '通过体素地图、碰撞检测和异常监控保障自动化作业安全' },
-            { title: '设备集成', description: '对接雷达、GNSS、PLC 等工业设备，打通算法与现场执行链路' }
+            { title: '设备集成', description: '对接雷达、GNSS、PLC 等工业设备，打通算法与现场执行链路' },
+            { title: '上位机监控', description: '基于 Qt 5、ROS 2 与 OpenGL 展示系统健康、PLC 和工作流状态、多路点云及防撞包围盒，支持在线参数调整与 CSV 日志导出' }
         ]
     },
     2: {
